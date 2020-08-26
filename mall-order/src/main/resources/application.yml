@@ -1,0 +1,80 @@
+server:
+  port: 8001
+  servlet:
+    encoding:
+      enabled: true
+      charset: utf-8
+      force: true
+
+order:
+  username: order
+  age: 18
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mall-order?characterEncoding=UTF-8
+    username: root
+    password: 123456
+    platform: mysql
+    type: com.alibaba.druid.pool.DruidDataSource
+
+    #连接池
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 15
+      auto-commit: true
+      idle-timeout: 30000
+      pool-name: WebHikari
+      max-lifetime: 1800000
+      connection-timeout: 30000
+#sharding-jdbc分片规则设置
+#  shardingsphere:
+#    datasource:
+#      names: m1
+#      m1:
+#        type: com.alibaba.druid.pool.DruidDataSource
+#        driver-class-name: com.mysql.cj.jdbc.Driver
+#        url: jdbc:mysql://localhost:3306/mall-order
+#        username: root
+#        password: 123456
+#    sharding:
+#      tables:
+#        t_ordre:
+#          actualDataNodes: m1.t_order_$->{1..2}
+#          tableStrategy:
+#            inline:
+#              shardingColumn: order_id
+#              algorithmExpression: t_order_$->{order_id%2+1}
+#          keyGenerator:
+#            type: SNOWFLAKE
+#            column: order_id
+#    props:
+#      sql:
+#        show: true
+
+
+  main:
+    allow-bean-definition-overriding: true
+mybatis-plus:
+  global-config:
+    db-config:
+      id-type: auto
+      field-strategy: not_empty
+      table-underline: true
+      db-type: mysql
+      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.mmall.order.dto
+
+feign:
+  hystrix:
+    enabled: true
+cjyc:
+  swagger:
+    enabled: true
+    title: Web端接口文档
+    description: web端api接口文档
+    version: 2.0.1
+    basePackage: com.mmall
+    usePathMapping: false

@@ -1,0 +1,9 @@
+cjyc:
+  swagger:
+    enabled: true
+    title: Web端接口文档
+    description: web端api接口文档
+    version: 2.0.1
+    basePackage: com.*
+    groupName: Web
+    usePathMapping: false

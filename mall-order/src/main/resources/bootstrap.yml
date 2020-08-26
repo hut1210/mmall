@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: order
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+      config:
+        server-addr: localhost:8848
+        file-extension: yaml
+        namespace: 5559176d-b7a0-4c1a-a1fc-84c75b5a9471
+        group: dev
+    sentinel:
+      transport:
+        #配置sentinel dashboard地址
+        dashboard: localhost:8858
+        port: 8719
+
+

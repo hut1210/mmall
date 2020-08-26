@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: product
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/gulimall_pms?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+
+  redis:
+    host: localhost
+    port: 6379
+
+server:
+  port: 8082
+
+product:
+  username: product
+  age: 18
+
+cjyc:
+  swagger:
+    enabled: true
+    title: Web端接口文档
+    description: web端api接口文档
+    version: 2.0.1
+    basePackage: com.mmall.product.controller
+    groupName: Web
+    usePathMapping: false
+
+mybatis-plus:
+  mapper-locations: classpath:/mapper/**/*.xml
+  type-aliases-package: com.mmall.product
+
+  #设置实体类的自增主键
+  global-config:
+    db-config:
+      id-type: auto
+      #逻辑删除
+      logic-delete-value: 1
+      logic-not-delete-value: 0

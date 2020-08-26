@@ -1,0 +1,30 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+      config:
+        server-addr: 127.0.0.1:8848
+        namespace: 575dd786-6e3b-4602-a0da-f4c5ec4bf1da
+    gateway:
+      routes:
+        - id: order
+          uri: http://localhost:8001
+          predicates:
+            - Path=/order/**
+        - id: product
+          uri: http://localhsot:8002
+          predicates:
+            - Path=/product/**
+
+#        - id: test_route
+#          uri: https://www.baidu.com
+#          predicates:
+#              - Query=url,baidu
+#
+#        - id: qq_route
+#          uri: https://www.qq.com
+#          predicates:
+#              - Query=url,qq
+  application:
+    name: gateway
